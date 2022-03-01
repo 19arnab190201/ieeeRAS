@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>IEEE-RAS | Robotics & Automation Society</title>
+
+    <!-- Favicon and Touch Icons -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/safari-pinned-tab.svg"
+      color="#6366f1"
+    />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#080032" />
+    <meta
+      name="msapplication-config"
+      content="assets/favicon/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Vendor Styles -->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="assets/vendor/boxicons/css/boxicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="assets/vendor/swiper/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="assets/vendor/lightgallery.js/dist/css/lightgallery.min.css"
+    />
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css" />
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all 0.4s 0.2s ease-in-out;
+        transition: all 0.4s 0.2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #131022;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: 0.6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 0.75rem;
+        vertical-align: text-bottom;
+        border: 0.15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner 0.75s linear infinite;
+        animation: spinner 0.75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255, 255, 255, 0.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      .card-img-top {
+        width: 150px;
+        vertical-align: middle;
+        margin: 20px;
+      }
+
+      .event-card {
+        margin: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .gallery-sec {
+        background-color: #1f1c2d !important;
+        padding-top: 50px;
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+     window.localStorage.setItem("mode", "dark");
+
+      let mode = window.localStorage.getItem("mode"),
+        root = document.getElementsByTagName("html")[0];
+      if (mode !== undefined && mode === "dark") {
+        root.classList.add("dark-mode");
+      } else {
+        root.classList.remove("dark-mode");
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector(".page-loading");
+          preloader.classList.remove("active");
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+  <!-- Body -->
+  <body>
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+      </div>
+    </div>
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+      <!-- Navbar -->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+      <header
+        class="header navbar navbar-expand-lg navbar-light position-absolute"
+      >
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/img/logo.png" width="150" alt="Silicon" />
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="#home" class="nav-link">Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#about" class="nav-link"
+                    >About</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#event" class="nav-link"
+                    >Events</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#blogs" class="nav-link"
+                    >Blogs</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#teams" class="nav-link"
+                    >Board</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#gallery" class="nav-link"
+                    >Gallery</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a href="#contact" class="nav-link"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="offcanvas-footer border-top">
+              <a
+                href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/"
+                class="btn btn-primary w-100"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="bx bx-check-square fs-4 lh-1 me-1"></i>
+                &nbsp;Get Started
+              </a>
+            </div>
+          </div>
+          <div
+            class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4"
+            data-bs-toggle="mode"
+          >
+            <input type="checkbox" class="form-check-input" id="theme-mode" />
+            <label class="form-check-label d-none d-sm-block" for="theme-mode"
+              >Light</label
+            >
+            <label class="form-check-label d-none d-sm-block" for="theme-mode"
+              >Dark</label
+            >
+          </div>
+          <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a
+            href="https://themes.getbootstrap.com/product/silicon-business-technology-template-ui-kit/"
+            class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="bx bx-check-square fs-5 lh-1 me-1"></i>
+            &nbsp;Get Started
+          </a>
+        </div>
+      </header>
+      <!-- Hero -->
+      <section id="home"
+        class="jarallax position-relative d-flex align-items-center min-vh-100 bg-light mb-5 py-lg-5 pt-5"
+        style="
+          background-image: url(assets/img/landing/digital-agency/hero-bg.svg);
+        "
+        data-jarallax
+        data-img-position="0% 100%"
+        data-speed="0.5"
+      >
+        <div class="container position-relative zindex-5 py-5">
+          <div class="row justify-content-md-start justify-content-center">
+            <div
+              class="col-md-6 col-sm-8 order-md-1 order-2 d-flex flex-column justify-content-between mt-4 pt-2 text-md-start text-center"
+            >
+              <div class="mb-md-5 pb-xl-5 mb-4">
+                <!-- Video popup btn -->
+                <div
+                  class="d-inline-flex align-items-center position-relative mb-3"
+                >
+                  <h4 class="mb-0">LEARN | DESIGN | BUILD</h4>
+                </div>
+
+                <!-- Text -->
+                <h1 class="display-2 mb-md-5 mb-3 pb-3">
+                  Welcome to,
+                  <span class="text-gradient-primary">Robotics</span>
+                  &
+                  <span class="text-gradient-primary">Automation</span>
+                  Society
+                </h1>
+                <div class="d-md-flex align-items-md-start">
+                  <p class="d-lg-block d-none mb-0 ps-md-3">
+                    IEEE - Robotics and Automation (RAS) is a student chapter in
+                    Vellore Institute of Technology (VIT), Vellore
+                  </p>
+                </div>
+              </div>
+
+              <!-- Scroll down btn -->
+              <div
+                class="d-inline-flex align-items-center justify-content-center justify-content-md-start position-relative"
+              >
+                <a
+                  href="#benefits"
+                  data-scroll
+                  data-scroll-offset="100"
+                  class="btn btn-video btn-icon rounded-circle shadow-sm flex-shrink-0 stretched-link me-3"
+                >
+                  <i class="bx bx-chevron-down"></i>
+                </a>
+                <span class="fs-sm">Discover more</span>
+              </div>
+            </div>
+
+            <!-- Animated gfx -->
+            <div class="col-sm-6 col-sm-6 col-9 order-md-2 order-1">
+              <lottie-player
+                class="mx-auto"
+                src="assets/json/animation-digital-agency.json"
+                background="transparent.html"
+                speed="1"
+                loop
+                autoplay
+              ></lottie-player>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Benefits (features) -->
+      <section  class="container mb-5 pt-lg-5" id="benefits">
+        <div
+          class="swiper pt-3"
+          data-swiper-options='{
+    "slidesPerView": 1,
+    "pagination": {
+      "el": ".swiper-pagination",
+      "clickable": true
+    },
+    "breakpoints": {
+      "500": {
+        "slidesPerView": 2
+      },
+      "991": {
+        "slidesPerView": 3
+      }
+    }
+  }'
+        >
+          <div class="swiper-wrapper">
+            <!-- Item -->
+            <div class="swiper-slide border-end-lg px-2">
+              <div class="text-center">
+                <img
+                  src="assets/img/landing/digital-agency/icons/idea.svg"
+                  width="48"
+                  alt="Bulb icon"
+                  class="d-block mb-4 mx-auto"
+                />
+                <h4 class="mb-2 pb-1">Creative Ideas</h4>
+                <p class="mx-auto" style="max-width: 336px">
+                  Sed morbi nulla pulvinar lectus tempor vel euismod accumsan.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="swiper-slide border-end-lg px-2">
+              <div class="text-center">
+                <img
+                  src="assets/img/landing/digital-agency/icons/award.svg"
+                  width="48"
+                  alt="Award icon"
+                  class="d-block mb-4 mx-auto"
+                />
+                <h4 class="mb-2 pb-1">Win Contests</h4>
+                <p class="mx-auto" style="max-width: 336px">
+                  Sit facilisis dolor arcu, fermentum vestibulum arcu elementum
+                  imperdiet.
+                </p>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="swiper-slide px-2">
+              <div class="text-center">
+                <img
+                  src="assets/img/landing/digital-agency/icons/team.svg"
+                  width="48"
+                  alt="Team icon"
+                  class="d-block mb-4 mx-auto"
+                />
+                <h4 class="mb-2 pb-1">Mentorship</h4>
+                <p class="mx-auto" style="max-width: 336px">
+                  Nam venenatis urna aenean quis feugiat et senectus turpis.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination (bullets) -->
+          <div
+            class="swiper-pagination position-relative pt-2 pt-sm-3 mt-4"
+          ></div>
+        </div>
+      </section>
+      <section id="about" class="container py-5 mt-n3 mt-sm-0">
+        <div class="row pt-lg-4 pb-lg-3 pb-xl-5">
+          <div class="col-md-4">
+            <h4 class="text-primary pb-1 mb-2">about</h4>
+            <h1 class="display-1">IEEE-RAS</h1>
+          </div>
+          <div class="col">
+            <p class="fs-xl mb-1 mb-md-3">
+              IEEE - Robotics and Automation (RAS) is a student chapter in
+              Vellore Institute of Technology (VIT), Vellore with its members
+              being multi-disciplinary enthusiasts of novel computational
+              practices and precision robotics. The chapter is a formidable
+              formation of engineering students who have worked on several major
+              projects and have organized several successful technical events in
+              the university.
+            </p>
+            <br />
+            <p class="fs-xl mb-1 mb-md-3">
+              With constant internal efforts to build something innovative,
+              engaging with other inventors, hobbyists through its lively online
+              community, 'Innerve' on Skillenza and raising fellow junior
+              students to be proficient in several technical fields via several
+              workshops and hands-on sessions, IEEE-RAS has come up to be one of
+              the leading international student chapters here in VIT.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="event" class="bg-gradient-primary py-5">
+        <h1 class="display-1 text-center">Events</h1>
+
+        <div class="container py-2 py-md-4 py-lg-5">
+          <div class="row py-xl-3">
+            <div class="col-xl-4 col-lg-5 offset-xl-1 order-lg-2 mb-4">
+              <h2
+                class="h1 text-light text-center text-sm-start pb-4 mb-0 mb-lg-3 ps-3"
+              >
+                IEEE-RAS organized REBOOT 2.0
+              </h2>
+              <div class="d-flex align-items-center">
+                <p class="fs-xl text-light ps-3 mb-0">
+                  The second instalment of our annual hackathon, REBOOT 2.0,
+                  consisting of 36 hours of continuous work by participants
+                  interspersed with insightful talks by various speakers and fun
+                  and engaging contests to break monotony. Judged by various
+                  distinguished experts in their own fields for crowning of
+                  three top ideas developed from scratch.
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-7 order-lg-1">
+              <!-- Ticket card -->
+              <div class="position-relative">
+                <div
+                  class="position-relative overflow-hidden rounded-3 zindex-5 py-5 px-4 p-sm-5"
+                >
+                  <span
+                    class="position-absolute top-0 start-0 w-100 h-100 bg-repeat-0 bg-position-center-start zindex-2"
+                    style="
+                      background-image: url(assets/img/landing/conference/price-card-left-bg.png);
+                    "
+                  ></span>
+                  <span
+                    class="position-absolute top-0 end-0 w-100 h-100 bg-repeat-0 bg-position-center-end zindex-2"
+                    style="
+                      background-image: url(assets/img/landing/conference/price-card-right-bg.png);
+                    "
+                  ></span>
+                  <div class="px-md-4 position-relative zindex-5">
+                    <div
+                      class="d-sm-flex align-items-start justify-content-between"
+                    >
+                      <div class="text-center text-sm-start me-sm-4">
+                        <div class="mt-3">
+                          <img
+                            src="assets/img/rebootlogo.png"
+                            width="150"
+                            alt="QR Code"
+                          />
+                        </div>
+                      </div>
+
+                      <div
+                        class="d-table bg-white rounded-3 p-4 flex-shrink-0 mx-auto mx-sm-0"
+                      >
+                        <img
+                          src="assets/img/landing/conference/qr.png"
+                          width="150"
+                          alt="QR Code"
+                        />
+                      </div>
+                    </div>
+                    <div class="lead text-primary fw-semibold">
+                      <span class="badge rounded-pill bg-primary"
+                        >Mar 7-9
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <span
+                  class="position-absolute bg-dark opacity-35 bottom-0 mb-n2 d-dark-mode-none"
+                  style="
+                    left: 1.5rem;
+                    width: calc(100% - 3rem);
+                    height: 5rem;
+                    filter: blur(0.75rem);
+                  "
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- YAHA BANAO -->
+      <section id="card" class="container pt-1 pt-xl-3 pb-5">
+        <h2 class="h1 text-center pb-3 pb-md-0 mb-md-5 py-5 my-3">
+          Something More...
+        </h2>
+
+        <!-- Item1 -->
+        <div class="container">
+        <div class="row hidden-md-up">
+          <div class="col-md-4">
+            <div class="card event-card">
+            <img
+              src="assets/img/VirtualEnvision.png"
+              class="card-img-top"
+              alt="Card image"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">
+                Virtual Envision
+              </h5>
+              <p class="card-text fs-sm">
+                Witnessing the huge popularity of Virtual Reality we guided
+                participants through an eyeopener of a workshop in VR game
+                development using the Unity game engine to design their games
+                and feel the capability of VR first-hand.
+              </p>
+            </div>
+          </div></div>
+          
+          <!-- Item2 -->
+          <div class="col-md-4"> <div class="card event-card">
+            <img
+              src="assets/img/ChaiTimeHack.png"
+              class="card-img-top"
+              alt="Card image"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">
+                Chai Time Hack
+              </h5>
+              <p class="card-text fs-sm">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.During the housebound times of
+                the Lockdown in 2020, we decided to give people something to
+                work on to improve and showcase their skills, so we brought the
+                Chai Time Hack, an online ideathon where participants gave
+                innovative solutions to real-world problems.
+              </p>
+            </div>
+          </div></div>
+         
+
+          <!-- Item 3-->
+          <div class="col-md-4"><div class="card event-card">
+            <img
+              src="assets/img/uibotics_white2.png"
+              class="card-img-top"
+              alt="Card image"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">UI Path</h5>
+              <p class="card-text fs-sm">
+                Automation is sneaking its way into every industry and everyone
+                should grasp the basics so that routine activities can free up
+                the time consumed. So, we took it upon ourselves to bring the
+                wonders of automation to the participants of this workshop and
+                make life simpler.
+              </p>
+            </div>
+          </div>
+        </div></div>
+          
+        <!-- Item4 -->
+        <div class="row mt-2">
+        <div class="col-md-4"><div class="card event-card">
+          <img
+            src="assets/img/quadcopter.png"
+            class="card-img-top"
+            alt="Card image"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-center text-primary">Quadcopter</h5>
+            <p class="card-text fs-sm">
+              Who isn't mesmerized by a seeing a quadcopter flying in the sky?
+              To add to that if it’s one you’ve made on your own, it's a great
+              experience. One which we brought to all the participants of this
+              premium event with each team making their very own
+              remote-controlled drone.
+            </p>
+          </div>
+        </div></div>
+          
+          <!-- Item5 -->
+          <div class="col-md-4"><div class="card event-card">
+            <img
+              src="assets/img/IDRL.png"
+              class="card-img-top"
+              alt="Card image"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">IDRL</h5>
+              <p class="card-text fs-sm">
+                IDRL is India's First and Largest Drone Racing League with an
+                amazing community of pilots, sponsors, local hobby shops and
+                partners and we were extremely honoured to have hosted the same
+                in our VIT Vellore campus and have our students participate in
+                it.
+              </p>
+            </div>
+          </div></div>
+          
+          <!-- Item 6-->
+          <div class="col-md-4"><div class="card event-card">
+            <img
+              style="width: 100px"
+              src="assets/img/vrgamedev.png"
+              class="card-img-top"
+              alt="Card image"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center text-primary">
+                VR Game Development
+              </h5>
+              <p class="card-text fs-sm">
+                Traversing the virtual landscape of a world you have created is
+                a surreal feeling that every participant in this workshop felt
+                with the help of their own game designed using the Unity Engine
+                with the VR headsets we provided to every participant to keep
+                for themselves.
+              </p>
+            </div>
+          </div></div>
+          
+        </div>
+      </section>
+      <!-- YAHA BANAO ENDS-->
+      <!-- Gallery -->
+      <section id="gallery" class="mb-5 pb-2 pb-md-4 pb-lg-5 gallery-sec">
+        <h2 class="h1 mb-4 text-center">Gallery</h2>
+        <p class="mb-4 mx-auto pb-3 fs-lg text-center" style="max-width: 636px">
+          Take a look at our work visually
+        </p>
+        <div class="row mx-5 px-5">
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <img
+              src="./assets/img/gallery/1.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Boat on Calm Water"
+            />
+
+            <img
+              src="./assets/img/gallery/2.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Wintry Mountain Landscape"
+            />
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <img
+              src="./assets/img/gallery/3.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Mountains in the Clouds"
+            />
+
+            <img
+              src="./assets/img/gallery/4.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Boat on Calm Water"
+            />
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <img
+              src="./assets/img/gallery/5.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Waves at Sea"
+            />
+
+            <img
+              src="./assets/img/gallery/6.jpg"
+              class="w-100 shadow-1-strong rounded mb-4"
+              alt="Yosemite National Park"
+            />
+          </div>
+        </div>
+      </section>
+      <!-- Gallery -->
+      <!-- Featured Projects -->
+      <section id="projects" class="container mb-5 pt-lg-2 pt-xl-4 pb-2 pb-md-3 pb-lg-5">
+        <h2 class="h1 mb-4 text-center">Featured Projects</h2>
+        <p class="mb-4 mx-auto pb-3 fs-lg text-center" style="max-width: 636px">
+          We create websites and mobile apps, marketing materials, branding, web
+          design, UX/UI design and illustrations.
+        </p>
+
+        <!-- Portfolio grid -->
+        <div class="masonry-grid row g-md-4 g-3 mb-4">
+          <!-- Item -->
+          <div class="masonry-grid-item col-md-4 col-sm-6 col-12">
+            <a
+              href="portfolio-single-project.html"
+              class="card card-portfolio card-hover bg-transparent border-0"
+            >
+              <div
+                class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+              >
+                <span
+                  class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"
+                ></span>
+                <div class="position-relative zindex-2">
+                  <h3 class="h5 text-light mb-2">
+                    Astronaut &amp; Flashing Neon Lights
+                  </h3>
+                  <span class="fs-sm text-light opacity-70"
+                    >3D Render / Graphic Design / Motion Design</span
+                  >
+                </div>
+              </div>
+              <div class="card-img">
+                <img
+                  src="assets/img/portfolio/grid/07.jpg"
+                  class="rounded-3"
+                  alt="Image"
+                />
+              </div>
+            </a>
+          </div>
+
+          <!-- Item -->
+          <div class="masonry-grid-item col-md-4 col-sm-6 col-12">
+            <a
+              href="portfolio-single-project.html"
+              class="card card-portfolio card-hover bg-transparent border-0"
+            >
+              <div
+                class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+              >
+                <span
+                  class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"
+                ></span>
+                <div class="position-relative zindex-2">
+                  <h3 class="h5 text-light mb-2">
+                    Plaster Antique Sculpture in a Pop Art Style
+                  </h3>
+                  <span class="fs-sm text-light opacity-70"
+                    >NFT / Graphic Design / Art / 3D</span
+                  >
+                </div>
+              </div>
+              <div class="card-img">
+                <img
+                  src="assets/img/portfolio/grid/08.jpg"
+                  class="rounded-3"
+                  alt="Image"
+                />
+              </div>
+            </a>
+          </div>
+
+          <!-- Item -->
+          <div class="masonry-grid-item col-md-4 col-sm-6 col-12">
+            <a
+              href="portfolio-single-project.html"
+              class="card card-portfolio card-hover bg-transparent border-0"
+            >
+              <div
+                class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+              >
+                <span
+                  class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"
+                ></span>
+                <div class="position-relative zindex-2">
+                  <h3 class="h5 text-light mb-2">Big Blue Whale Shape</h3>
+                  <span class="fs-sm text-light opacity-70"
+                    >3D Pollygonal Shape / Graphic Design / Art</span
+                  >
+                </div>
+              </div>
+              <div class="card-img">
+                <img
+                  src="assets/img/portfolio/grid/09.jpg"
+                  class="rounded-3"
+                  alt="Image"
+                />
+              </div>
+            </a>
+          </div>
+
+          <!-- Item -->
+          <div class="masonry-grid-item col-md-8 col-12">
+            <a
+              href="portfolio-single-project.html"
+              class="card card-portfolio card-hover bg-transparent border-0"
+            >
+              <div
+                class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+              >
+                <span
+                  class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 rounded-3"
+                ></span>
+                <div class="position-relative zindex-2">
+                  <h3 class="h5 text-light mb-2">3D Shape Illustration</h3>
+                  <span class="fs-sm text-light opacity-70"
+                    >3D Design / Illustration / Art</span
+                  >
+                </div>
+              </div>
+              <div class="card-img">
+                <img
+                  src="assets/img/portfolio/grid/10.jpg"
+                  class="rounded-3"
+                  alt="Image"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="pt-md-3 pt-2 text-center">
+          <a
+            href="portfolio-grid.html"
+            class="btn btn-lg btn-primary w-sm-auto w-100"
+            >Explore all</a
+          >
+        </div>
+      </section>
+      <!-- Blog + Contact cta -->
+      <div class="bg-secondary mb-5 pt-5">
+        <!-- Blog -->
+        <section id="blogs" class="container mb-5 py-lg-5">
+          <h2 class="h1 mb-4 pb-3 text-center">Latest From Our Blog</h2>
+          <div class="row">
+            <div class="col-lg-5 col-12 mb-lg-0 mb-4">
+              <!-- Article -->
+              <article class="card h-100 border-0 shadow-sm">
+                <div class="position-relative">
+                  <a
+                    href="blog-single.html"
+                    class="position-absolute top-0 start-0 w-100 h-100"
+                    aria-label="Read more"
+                  ></a>
+                  <a
+                    href="#"
+                    class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="Read later"
+                  >
+                    <i class="bx bx-bookmark"></i>
+                  </a>
+                  <img
+                    src="assets/img/blog/01.jpg"
+                    class="card-img-top"
+                    alt="Image"
+                    style="width:calc(100% - 40px) !important;"
+                    />
+                </div>
+                <div class="card-body pb-4">
+                  <div
+                    class="d-flex align-items-center justify-content-between mb-3"
+                  >
+                    <a
+                      href="#"
+                      class="badge fs-sm text-nav bg-secondary text-decoration-none"
+                      >Digital</a
+                    >
+                    <span class="fs-sm text-muted">12 hours ago</span>
+                  </div>
+                  <h3 class="h5 mb-0">
+                    <a href="blog-single.html"
+                      >Air Quality Analysis using ThingSpeak
+                    </a>
+                  </h3>
+                  <br />
+                  <p>
+                    I have always wondered how does the health app on our phone
+                    tracks our activity like walking, running, sleeping,
+                    calories intake, etc., and then come up with either a diet
+                    plan or displaying a status of our overall health as fit,
+                    obese, or unhealthy, etc.
+                  </p>
+                </div>
+                <div class="card-footer py-4">
+                  <div
+                    class="d-inline-flex align-items-center position-relative me-3"
+                  >
+                    <img
+                      src="assets/img/avatar/10.jpg"
+                      class="rounded-circle me-3"
+                      width="48"
+                      alt="Avatar"
+                    />
+                    <div>
+                      <a
+                        href="#"
+                        class="nav-link p-0 fw-bold text-decoration-none stretched-link"
+                        >Jerome Bell</a
+                      >
+                      <span class="fs-sm text-muted">Marketing Specialist</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <!-- Article -->
+              <article class="card border-0 shadow-sm overflow-hidden mb-4">
+                <div class="row g-0">
+                  <div
+                    class="col-sm-5 position-relative bg-position-center bg-repeat-0 bg-size-cover"
+                    style="
+                      background-image: url(assets/img/blog/08.jpg);
+                      min-height: 15rem;
+                    "
+                  >
+                    <a
+                      href="blog-single.html"
+                      class="position-absolute top-0 start-0 w-100 h-100"
+                      aria-label="Read more"
+                    ></a>
+                    <a
+                      href="#"
+                      class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="left"
+                      title="Read later"
+                    >
+                      <i class="bx bx-bookmark"></i>
+                    </a>
+                  </div>
+                  <div class="col-sm-7">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center mb-3">
+                        <a
+                          href="#"
+                          class="badge fs-sm text-nav bg-secondary text-decoration-none"
+                          >Design</a
+                        >
+                        <span class="fs-sm text-muted border-start ps-3 ms-3"
+                          >1 day ago</span
+                        >
+                      </div>
+                      <h3 class="h5">
+                        <a href="blog-single.html"
+                          >Disease Prediction: With RFC and Flask</a
+                        >
+                      </h3>
+                      <p>
+                        Machine learning has always fascinated me. The ability
+                        to analyse large amounts of data and then being able to
+                        obtain conclusive results effeciently is what makes it
+                        such a sought out skill. The beauty of this is however
+                        when we are actually able to put the concepts to use and
+                        implement them on real life problems.
+                      </p>
+                      <hr class="my-4" />
+                      <div
+                        class="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between"
+                      >
+                        <div
+                          class="d-flex align-items-center position-relative me-3"
+                        >
+                          <img
+                            src="assets/img/avatar/08.jpg"
+                            class="rounded-circle me-3"
+                            width="48"
+                            alt="Avatar"
+                          />
+                          <div>
+                            <a
+                              href="#"
+                              class="nav-link p-0 fw-bold text-decoration-none stretched-link"
+                              >Shruti Nk
+                            </a>
+                            <span class="fs-sm text-muted"
+                              >Product Manager</span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex align-items-center mt-sm-0 mt-4 text-muted"
+                        >
+                          <div class="d-flex align-items-center me-3">
+                            <i class="bx bx-like fs-lg me-1"></i>
+                            <span class="fs-sm">8</span>
+                          </div>
+                          <div class="d-flex align-items-center me-3">
+                            <i class="bx bx-comment fs-lg me-1"></i>
+                            <span class="fs-sm">7</span>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <i class="bx bx-share-alt fs-lg me-1"></i>
+                            <span class="fs-sm">4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Article -->
+              <article class="card border-0 shadow-sm overflow-hidden">
+                <div class="row g-0">
+                  <div
+                    class="col-sm-5 position-relative bg-position-center bg-repeat-0 bg-size-cover"
+                    style="
+                      background-image: url(assets/img/blog/02.jpg);
+                      min-height: 15rem;
+                    "
+                  >
+                    <a
+                      href="blog-single.html"
+                      class="position-absolute top-0 start-0 w-100 h-100"
+                      aria-label="Read more"
+                    ></a>
+                    <a
+                      href="#"
+                      class="btn btn-icon btn-light bg-white border-white btn-sm rounded-circle position-absolute top-0 end-0 zindex-5 me-3 mt-3"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="left"
+                      title="Read later"
+                    >
+                      <i class="bx bx-bookmark"></i>
+                    </a>
+                  </div>
+                  <div class="col-sm-7">
+                    <div class="card-body">
+                      <div class="d-flex align-items-center mb-3">
+                        <a
+                          href="#"
+                          class="badge fs-sm text-nav bg-secondary text-decoration-none"
+                          >Tips &amp; Advice</a
+                        >
+                        <span class="fs-sm text-muted border-start ps-3 ms-3"
+                          >May 24, 2021</span
+                        >
+                      </div>
+                      <h3 class="h5">
+                        <a href="blog-single.html"
+                          >Socket programming in Python
+                        </a>
+                      </h3>
+                      <p>
+                        Ever thought about how an online multiplayer game works.
+                        How while playing a game, your friend knocks you out
+                        with a grenade and it’s reflected on every player’s
+                        screen. A very basic way to explain all this is through
+                        a client-server model connected via a socket.
+                      </p>
+                      <hr class="my-4" />
+                      <div
+                        class="d-flex flex-sm-nowrap flex-wrap align-items-center justify-content-between"
+                      >
+                        <div
+                          class="d-flex align-items-center position-relative me-3"
+                        >
+                          <img
+                            src="assets/img/avatar/09.jpg"
+                            class="rounded-circle me-3"
+                            width="48"
+                            alt="Avatar"
+                          />
+                          <div>
+                            <a
+                              href="#"
+                              class="nav-link p-0 fw-bold text-decoration-none stretched-link"
+                              >Marvin McKinney</a
+                            >
+                            <span class="fs-sm text-muted"
+                              >Senior UI/UX Designer</span
+                            >
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex align-items-center mt-sm-0 mt-4 text-muted"
+                        >
+                          <div class="d-flex align-items-center me-3">
+                            <i class="bx bx-like fs-lg me-1"></i>
+                            <span class="fs-sm">8</span>
+                          </div>
+                          <div class="d-flex align-items-center me-3">
+                            <i class="bx bx-comment fs-lg me-1"></i>
+                            <span class="fs-sm">7</span>
+                          </div>
+                          <div class="d-flex align-items-center">
+                            <i class="bx bx-share-alt fs-lg me-1"></i>
+                            <span class="fs-sm">4</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-12 mt-4 pt-lg-4 pt-3 text-center">
+              <a
+                href="blog-grid-no-sidebar.html"
+                class="btn btn-lg btn-outline-primary w-sm-auto w-100"
+                >More blog posts</a
+              >
+            </div>
+          </div>
+        </section>
+        <section id="teams" class="container py-5 my-2 my-md-4 my-lg-5">
+          <div
+            class="d-md-flex align-items-center justify-content-between text-center text-md-start pt-md-1 pt-lg-3"
+          >
+            <h2 class="text-center h1 mb-4 mb-md-0 me-md-3">Our Team</h2>
+          </div>
+          <div
+            class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-2 mt-lg-4"
+          >
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/ananyaNew.png"
+                    class="rounded-3"
+                    alt="Ralph Edwards"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Ralph Edwards</h3>
+                  <p class="fs-sm mb-0">Founder &amp; CEO, Uber</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/IshitaNew.png"
+                    class="rounded-3"
+                    alt="Albert Flores"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Albert Flores</h3>
+                  <p class="fs-sm mb-0">Principal Consultant, Twitch</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/Om.png"
+                    class="rounded-3"
+                    alt="Jenny Wilson"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Jenny Wilson</h3>
+                  <p class="fs-sm mb-0">UX Designer, Glassdoor</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/27.jpg"
+                    class="rounded-3"
+                    alt="Marvin McKinney"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Marvin McKinney</h3>
+                  <p class="fs-sm mb-0">Product Manager, Google</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/28.jpg"
+                    class="rounded-3"
+                    alt="Esther Howard"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Esther Howard</h3>
+                  <p class="fs-sm mb-0">VP of Strategy, Stretto Inc.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/29.jpg"
+                    class="rounded-3"
+                    alt="Cameron Williamson"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">
+                    Cameron Williamson
+                  </h3>
+                  <p class="fs-sm mb-0">Co-Founder, Invision LTD</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/30.jpg"
+                    class="rounded-3"
+                    alt="Jerome Bell"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Jerome Bell</h3>
+                  <p class="fs-sm mb-0">Strategic Advisor, Shopify</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col">
+              <div class="card card-hover border-0 bg-transparent">
+                <div class="position-relative">
+                  <img
+                    src="assets/img/team/31.jpg"
+                    class="rounded-3"
+                    alt="Darrell Steward"
+                  />
+                  <div
+                    class="card-img-overlay d-flex flex-column align-items-center justify-content-center rounded-3"
+                  >
+                    <span
+                      class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-35 rounded-3"
+                    ></span>
+                    <div class="position-relative d-flex zindex-2">
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-facebook btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-facebook"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-linkedin btn-sm bg-white me-2"
+                      >
+                        <i class="bx bxl-linkedin"></i>
+                      </a>
+                      <a
+                        href="#"
+                        class="btn btn-icon btn-secondary btn-twitter btn-sm bg-white"
+                      >
+                        <i class="bx bxl-twitter"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body text-center p-3">
+                  <h3 class="fs-lg fw-semibold pt-1 mb-2">Darrell Steward</h3>
+                  <p class="fs-sm mb-0">Senior Project Manager, Uber</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Contact CTA -->
+        <section id="contact"
+          class="container pt-3 pb-4 pb-md-5"
+          style="
+            margin-top: -156px;
+            margin-bottom: 120px;
+            transform: translateY(156px);
+          "
+        >
+          <div class="card border-0 bg-gradient-primary">
+            <div
+              class="card-body p-md-5 p-4 bg-size-cover"
+              style="
+                background-image: url(assets/img/landing/digital-agency/contact-bg.png);
+              "
+            >
+              <div class="rounded-3 py-5 px-3 px-sm-0 mb-xl-4">
+                <form
+                  class="needs-validation row justify-content-center py-lg-3 py-xl-4"
+                  novalidate=""
+                >
+                  <div class="col-xl-8 col-lg-9 col-md-10 col-sm-11">
+                    <h2 class="h1 pb-lg-1 mb-4">Contact Us</h2>
+
+                    <div class="row">
+                      <div class="col-sm-6 mb-4">
+                        <label for="name" class="form-label fs-base"
+                          >First name</label
+                        >
+                        <input
+                          type="text"
+                          id="name"
+                          class="form-control form-control-lg"
+                          required=""
+                        />
+                      </div>
+                      <div class="col-sm-6 mb-4">
+                        <label for="email" class="form-label fs-base"
+                          >Last Name</label
+                        >
+                        <input
+                          type="text"
+                          id="lastname"
+                          class="form-control form-control-lg"
+                          required=""
+                        />
+                      </div>
+                      <div class="col-sm-6 mb-4">
+                        <label for="email" class="form-label fs-base"
+                          >Email address</label
+                        >
+                        <input
+                          type="email"
+                          id="email"
+                          class="form-control form-control-lg"
+                          required=""
+                        />
+                        <div class="invalid-feedback">
+                          Please provide a valid email address!
+                        </div>
+                      </div>
+                      <div class="col-sm-6 mb-4">
+                        <label for="phone" class="form-label fs-base"
+                          >Phone No.</label
+                        >
+                        <input
+                          type="phone"
+                          id="phone"
+                          class="form-control form-control-lg"
+                          required=""
+                        />
+                        <div class="invalid-feedback">
+                          Please provide a valid phone number!
+                        </div>
+                      </div>
+                      <div class="col-12 mb-4">
+                        <label for="message" class="form-label fs-base"
+                          >Message</label
+                        >
+                        <textarea
+                          id="message"
+                          class="form-control form-control-lg"
+                          rows="4"
+                          required=""
+                        ></textarea>
+                        <div class="invalid-feedback">
+                          Please write your message!
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn btn-secondary btn-lg shadow-primary"
+                    >
+                      Send message
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer pt-5 pb-4 pb-lg-5 mt-2 mt-md-0">
+      <div class="container pt-lg-4">
+        <div class="row pb-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4">
+              <img src="assets/img/raswhite.png" width="200" alt="logo" />
+            </div>
+
+            
+          </div>
+          <div
+            class="col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0"
+          >
+            <div id="footer-links" class="row">
+              <div class="col-lg-4">
+                <h6 class="mb-2">
+                  <a
+                    href="#useful-links"
+                    class="d-block text-dark dropdown-toggle d-lg-none py-2"
+                    data-bs-toggle="collapse"
+                    >Useful Links</a
+                  >
+                </h6>
+                <div
+                  id="useful-links"
+                  class="collapse d-lg-block"
+                  data-bs-parent="#footer-links"
+                >
+                  <ul class="nav flex-column pb-lg-1 mb-lg-3">
+                    <li class="nav-item">
+                      <a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2"
+                        >Home</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2"
+                        >Board</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2"
+                        >About Us</a
+                      >
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2"
+                        >Blog</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-3">
+                <h6 class="mb-2">
+                  <a
+                    href="#social-links"
+                    class="d-block text-dark dropdown-toggle d-lg-none py-2"
+                    data-bs-toggle="collapse"
+                    >Socials</a
+                  >
+                </h6>
+                <div
+                  id="social-links"
+                  class="collapse d-lg-block"
+                  data-bs-parent="#footer-links"
+                >
+                  <ul class="nav flex-column mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link d-inline-block px-0 pt-1 pb-2"
+                      >
+                        <i class="bx bxl-instagram"></i> ieeerasvit</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link d-inline-block px-0 pt-1 pb-2"
+                      >
+                        <i class="bx bxl-facebook"></i> IEEERASVIT</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link d-inline-block px-0 pt-1 pb-2"
+                      >
+                        <i class="bx bxl-linkedin"></i> ieee-ras-vit</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a
+                        href="#"
+                        class="nav-link d-inline-block px-0 pt-1 pb-2"
+                      >
+                        <i class="bx bxl-twitter"></i> IEEERASVIT</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
+                <h6 class="mb-2">Contact Us</h6>
+                <a href="mailto:support@ieeerasvit.in" class="fw-medium">
+                  <i class='bx bx-mail-send px-1'></i></i>support@ieeerasvit.in
+                </a>
+                <br />
+                <a class="fw-medium"><i class='bx bxs-phone px-1' ></i> +91 7376 540 358 </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+          &copy; All rights reserved. Made by
+          <a
+            class="nav-link d-inline-block p-0"
+            href="https://www.linkedin.com/in/arnabkumar190201/"
+            target="_blank"
+            rel="noopener"
+            >Arnab Kumar</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+    <!-- Vendor Scripts -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="assets/vendor/jarallax/dist/jarallax.min.js"></script>
+    <script src="assets/vendor/%40lottiefiles/lottie-player/dist/lottie-player.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
+    <script src="assets/vendor/lg-video.js/dist/lg-video.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/shufflejs/dist/shuffle.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+
+  <!-- Mirrored from silicon.createx.studio/landing-digital-agency.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 28 Feb 2022 03:33:37 GMT -->
+</html>
